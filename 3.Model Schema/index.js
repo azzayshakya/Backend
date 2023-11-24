@@ -1,15 +1,29 @@
 const express = require('express');
 const ConnectDb = require('./db');
 const { json } = require('body-parser');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 const port = 4000;
 
 ConnectDb();
 
+
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json()); 
+
+
+
 app.get('/', (req, res) => {
-    res.send("hi there")
+    res.sendFile(path.join(__dirname + "/index.html"));
+    
 });
+
+
+
 app.use('/api',require('./Routes/CreateUser'))
 app.use(json);
 
