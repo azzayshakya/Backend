@@ -14,7 +14,7 @@ const ConnectDb=async ()=>{
 
     catch(error){
         console.log(error)
-        console.log("not connected")
+        console.log(" Your mongoDB is not connected")
     }
 }
 
