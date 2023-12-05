@@ -1,16 +1,20 @@
 const mongoose = require('mongoose');
+const ConnectDb=async ()=>{
+    try{
+        const conn=await mongoose.connect(process.env.DB_STRING)
 
 
-const ConnectDb = async () => {
-    try {
-       
-        const conn = await mongoose.connect(process.env.DB_STRING);      
-        console.log("Connected to MongoDB");
-        }
-        
-        catch (error) {       
-        console.log("Error:", error);
-        console.log("Not connected to MongoDB");
-    };
+        // const conn = await mongoose.connect("mongodb://127.0.0.1:27017/RestApi");
+        // for local system
+       console.log("connented")
+    }
+
+
+
+    catch(error){
+        console.log(error)
+        console.log(" Your mongoDB is not connected")
+    }
 }
-module.exports = ConnectDb;
+
+module.exports=ConnectDb;

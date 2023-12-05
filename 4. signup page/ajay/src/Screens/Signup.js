@@ -6,17 +6,21 @@ import { Link } from 'react-router-dom';
 
 const Signup = () => {
 
-  const [credentials, setcredentials] = useState({ name: "", email: "", geolocation: "", password: "" })
+  const [credentials, setcredentials] = useState({ name: "", email: "", location: "", password: "" })
+
+
 
   const handleSubmit = async (e) => {
+    //prevent default is synthatic event
     e.preventDefault();
-    console.log(JSON.stringify({ name: credentials.name, email: credentials.email, location: credentials.geolocation, password: credentials.password }))
-    const response = await fetch("http://localhost:5000/api/creatuser", {
+    console.log(JSON.stringify({ name: credentials.name, email: credentials.email, location: credentials.location, password: credentials.password }))
+    
+    const response = await fetch("http://localhost:4000/api/creatuser", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name: credentials.name, email: credentials.email, location: credentials.geolocation, password: credentials.password })
+      body: JSON.stringify(credentials)
     });
     const json = await response.json();
     console.log(json);
@@ -69,8 +73,8 @@ const Signup = () => {
               placeholder="Type Your Address Here"
               className="input_text"
               autocomplete="off"
-              name="geolocation"
-              value={credentials.geolocation}
+              name="location"
+              value={credentials.location}
               onChange={handleNameChange}
 
             />
