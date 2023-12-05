@@ -2,6 +2,10 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+
+// d,nklsd
+require('dotenv').config();
+
 const app = express();
 const port = 4000;
 const mongoDB =require("./db")

@@ -28,7 +28,7 @@
       
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      /* overflow: hidden; */
       margin-top: 70px;
   }
   .login_form_container::before{
