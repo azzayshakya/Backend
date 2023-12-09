@@ -4,16 +4,13 @@ const bodyParser = require('body-parser')
 
 const app = express();
 
-// mongoose.connect("mongodb://localhost:27017/Sample",{useNewUrlParser:true,useUnifiedTopology:true}).then (()=>{
-//     console.log("connected to mongodb")
-// }).catch((err)=>{
-//     console.log(err)
-//     // console.log("ajay")
-// })
+app.get('/', (req, res) => {
+   res.send("hey it's me ajay shakya")
+    
+});
 
-z
 try{
-    const conn= mongoose.connect("mongodb+srv://ajayshakya:ajayajay@cluster0.3rgz1au.mongodb.net/?retryWrites=true&w=majority",
+    const conn= mongoose.connect("mongodb+srv://ajayshakya:ajayajay@cluster0.3rgz1au.mongodb.net/azzay?retryWrites=true&w=majority",
    )
     // console.log(conn)
 console.log("connented to mongodb")
@@ -50,6 +47,36 @@ app.post("/api/v1/product/new",async(req,res)=>{
         product
     })
 })
+
+app.get("/api/v1/product/new",async(req,res)=>{
+    try {
+    const product = await Product.create(req.body);
+    res.send("ajju is heres")
+
+    res.status(200).json({
+        success: true,
+        // product
+    });
+} catch (error) {
+    console.log(error);
+    res.status(500).json({
+        success: false,
+        error: "Internal Server Error"
+    });
+}
+
+})
+
+
+
+
+//thunderclient work
+
+// {
+//     "name":"azzay ",
+//      "description":"he is a brilleint coder",
+//      "price":99
+//  }
 
 
 
